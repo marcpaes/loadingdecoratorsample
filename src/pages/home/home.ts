@@ -6,15 +6,15 @@ export function LongTask(
   propertyKey: string, // The name of the method
   descriptor: TypedPropertyDescriptor<(... p:any[]) => Promise<any>>
   ) {
-    let originalMethod = descriptor.value;
+    let originalMethod = descriptor.value.bind(target);
     descriptor.value =  async function() {
       try {
-        target.showLoading();
+        this.showLoading();
         var ret = await originalMethod();
-        target.dismissLoading();
+        this.dismissLoading();
         return ret;
       } catch (err) {
-        target.dismissLoading();
+        this.dismissLoading();
         throw(err);
       }
     }
@@ -31,7 +31,7 @@ export abstract class BaseComponent {
     this.loadingCtrl = injector.get(LoadingController);
   }
 
-  public showLoading = () => {
+  public showLoading() {
     console.log(this);
     if (this.loading == null) {
       this.loading = this.loadingCtrl.create({

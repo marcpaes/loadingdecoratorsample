@@ -63,7 +63,7 @@ var TabsPage = /** @class */ (function () {
         this.tab3Root = __WEBPACK_IMPORTED_MODULE_2__contact_contact__["a" /* ContactPage */];
     }
     TabsPage = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/marceloaugusto/Documents/code/loading_teste/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/marceloaugusto/Documents/code/loading_teste/src/pages/tabs/tabs.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/marceloaugusto/Documents/code/loadingdecoratorsample/src/pages/tabs/tabs.html"*/'<ion-tabs>\n  <ion-tab [root]="tab1Root" tabTitle="Home" tabIcon="home"></ion-tab>\n  <ion-tab [root]="tab2Root" tabTitle="About" tabIcon="information-circle"></ion-tab>\n  <ion-tab [root]="tab3Root" tabTitle="Contact" tabIcon="contacts"></ion-tab>\n</ion-tabs>\n'/*ion-inline-end:"/Users/marceloaugusto/Documents/code/loadingdecoratorsample/src/pages/tabs/tabs.html"*/
         }),
         __metadata("design:paramtypes", [])
     ], TabsPage);
@@ -98,7 +98,7 @@ var AboutPage = /** @class */ (function () {
     }
     AboutPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-about',template:/*ion-inline-start:"/Users/marceloaugusto/Documents/code/loading_teste/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/marceloaugusto/Documents/code/loading_teste/src/pages/about/about.html"*/
+            selector: 'page-about',template:/*ion-inline-start:"/Users/marceloaugusto/Documents/code/loadingdecoratorsample/src/pages/about/about.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      About\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n\n</ion-content>\n'/*ion-inline-end:"/Users/marceloaugusto/Documents/code/loadingdecoratorsample/src/pages/about/about.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], AboutPage);
@@ -133,7 +133,7 @@ var ContactPage = /** @class */ (function () {
     }
     ContactPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-contact',template:/*ion-inline-start:"/Users/marceloaugusto/Documents/code/loading_teste/src/pages/contact/contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/marceloaugusto/Documents/code/loading_teste/src/pages/contact/contact.html"*/
+            selector: 'page-contact',template:/*ion-inline-start:"/Users/marceloaugusto/Documents/code/loadingdecoratorsample/src/pages/contact/contact.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      Contact\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-list-header>Follow us on Twitter</ion-list-header>\n    <ion-item>\n      <ion-icon name="ionic" item-start></ion-icon>\n      @ionicframework\n    </ion-item>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/marceloaugusto/Documents/code/loadingdecoratorsample/src/pages/contact/contact.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], ContactPage);
@@ -212,7 +212,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 function LongTask(target, // The prototype of the class
     propertyKey, // The name of the method
     descriptor) {
-    var originalMethod = descriptor.value;
+    var originalMethod = descriptor.value.bind(target);
     descriptor.value = function () {
         return __awaiter(this, void 0, void 0, function () {
             var ret, err_1;
@@ -220,15 +220,15 @@ function LongTask(target, // The prototype of the class
                 switch (_a.label) {
                     case 0:
                         _a.trys.push([0, 2, , 3]);
-                        target.showLoading();
+                        this.showLoading();
                         return [4 /*yield*/, originalMethod()];
                     case 1:
                         ret = _a.sent();
-                        target.dismissLoading();
+                        this.dismissLoading();
                         return [2 /*return*/, ret];
                     case 2:
                         err_1 = _a.sent();
-                        target.dismissLoading();
+                        this.dismissLoading();
                         throw (err_1);
                     case 3: return [2 /*return*/];
                 }
@@ -239,19 +239,18 @@ function LongTask(target, // The prototype of the class
 }
 var BaseComponent = /** @class */ (function () {
     function BaseComponent(injector) {
-        var _this = this;
-        this.showLoading = function () {
-            console.log(_this);
-            if (_this.loading == null) {
-                _this.loading = _this.loadingCtrl.create({
-                    content: 'Please wait...'
-                });
-                _this.loading.present();
-            }
-        };
         this.navCtrl = injector.get(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]);
         this.loadingCtrl = injector.get(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["d" /* LoadingController */]);
     }
+    BaseComponent.prototype.showLoading = function () {
+        console.log(this);
+        if (this.loading == null) {
+            this.loading = this.loadingCtrl.create({
+                content: 'Please wait...'
+            });
+            this.loading.present();
+        }
+    };
     BaseComponent.prototype.dismissLoading = function () {
         if (this.loading != null) {
             this.loading.dismiss();
@@ -298,7 +297,7 @@ var HomePage = /** @class */ (function (_super) {
     ], HomePage.prototype, "reload", null);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/Users/marceloaugusto/Documents/code/loading_teste/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <button class="ion-button" (click)="reload()">Show Loading</button>\n</ion-content>\n'/*ion-inline-end:"/Users/marceloaugusto/Documents/code/loading_teste/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/Users/marceloaugusto/Documents/code/loadingdecoratorsample/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <button class="ion-button" (click)="reload()">Show Loading</button>\n</ion-content>\n'/*ion-inline-end:"/Users/marceloaugusto/Documents/code/loadingdecoratorsample/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injector */]) === "function" && _a || Object])
     ], HomePage);
@@ -430,7 +429,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/marceloaugusto/Documents/code/loading_teste/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/marceloaugusto/Documents/code/loading_teste/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/marceloaugusto/Documents/code/loadingdecoratorsample/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/marceloaugusto/Documents/code/loadingdecoratorsample/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
