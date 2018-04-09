@@ -1,78 +1,30 @@
-import { Component, Injector } from '@angular/core';
-import { NavController, LoadingController, Loading } from 'ionic-angular';
-
-export function LongTask(
-  target: BaseComponent, // The prototype of the class
-  propertyKey: string, // The name of the method
-  descriptor: TypedPropertyDescriptor<(... p:any[]) => Promise<any>>
-  ) {
-    let originalMethod = descriptor.value.bind(target);
-    descriptor.value =  async function() {
-      try {
-        this.showLoading();
-        var ret = await originalMethod();
-        this.dismissLoading();
-        return ret;
-      } catch (err) {
-        this.dismissLoading();
-        throw(err);
-      }
-    }
-    return descriptor;
-}
-
-export abstract class BaseComponent {
-  private loading: Loading;
-  public navCtrl: NavController;
-  public loadingCtrl: LoadingController;
-
-  constructor(injector: Injector) {
-    this.navCtrl = injector.get(NavController);
-    this.loadingCtrl = injector.get(LoadingController);
-  }
-
-  public showLoading() {
-    console.log(this);
-    if (this.loading == null) {
-      this.loading = this.loadingCtrl.create({
-        content: 'Please wait...'
-      });
-
-      this.loading.present();
-    }
-  }
-
-  public dismissLoading() {
-    if (this.loading != null) {
-      this.loading.dismiss();
-      this.loading = null;
-    }
-  }
-}
+import { Component, Injector } from "@angular/core";
+import { NavController, LoadingController, Loading } from "ionic-angular";
+import { BaseComponent } from "../../infrastructure/basecomponent";
+import { LongTask } from "../../infrastructure/longtask";
 
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html'
+    selector: "page-home",
+    templateUrl: "home.html"
 })
-export class HomePage extends BaseComponent{
+export class HomePage extends BaseComponent {
+    constructor(injector: Injector) {
+        super(injector);
+    }
 
-  constructor(injector: Injector) {
-      super(injector);
-  }
+    ionViewDidEnter() {}
 
-  async ionViewDidEnter(){
+    @LongTask
+    public async reload() {
+        console.log(this);
+        await this.loadData();
+    }
 
-  }
-
-  @LongTask
-  public async reload () {
-    await this.loadData();
-  }
-
-  public loadData () {
-    return new Promise((resolve, reject) => {
-      setTimeout(resolve, 2000);
-    });
-  }
-
+    @LongTask
+    public loadData() {
+        console.log(this);
+        return new Promise((resolve, reject) => {
+            setTimeout(resolve, 2000);
+        });
+    }
 }
