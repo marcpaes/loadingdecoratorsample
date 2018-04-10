@@ -151,7 +151,7 @@ var ContactPage = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomePage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__infrastructure_basecomponent__ = __webpack_require__(273);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__infrastructure_longtask__ = __webpack_require__(274);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__infrastructure_long_task_decorator__ = __webpack_require__(274);
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -219,10 +219,14 @@ var HomePage = /** @class */ (function (_super) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0:
-                        console.log(this);
-                        return [4 /*yield*/, this.loadData()];
+                    case 0: return [4 /*yield*/, this.loadData()];
                     case 1:
+                        _a.sent();
+                        return [4 /*yield*/, this.loadData()];
+                    case 2:
+                        _a.sent();
+                        return [4 /*yield*/, this.loadData()];
+                    case 3:
                         _a.sent();
                         return [2 /*return*/];
                 }
@@ -230,19 +234,12 @@ var HomePage = /** @class */ (function (_super) {
         });
     };
     HomePage.prototype.loadData = function () {
-        console.log(this);
         return new Promise(function (resolve, reject) {
             setTimeout(resolve, 2000);
         });
     };
     __decorate([
-        __WEBPACK_IMPORTED_MODULE_2__infrastructure_longtask__["a" /* LongTask */],
-        __metadata("design:type", Function),
-        __metadata("design:paramtypes", []),
-        __metadata("design:returntype", Promise)
-    ], HomePage.prototype, "reload", null);
-    __decorate([
-        __WEBPACK_IMPORTED_MODULE_2__infrastructure_longtask__["a" /* LongTask */],
+        __WEBPACK_IMPORTED_MODULE_2__infrastructure_long_task_decorator__["a" /* LongTask */],
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", void 0)
@@ -251,10 +248,9 @@ var HomePage = /** @class */ (function (_super) {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: "page-home",template:/*ion-inline-start:"/Users/marceloaugusto/Documents/code/loadingdecoratorsample/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>Home</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <button class="ion-button" (click)="reload()">Show Loading</button>\n</ion-content>\n'/*ion-inline-end:"/Users/marceloaugusto/Documents/code/loadingdecoratorsample/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injector */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injector */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0__angular_core__["C" /* Injector */]])
     ], HomePage);
     return HomePage;
-    var _a;
 }(__WEBPACK_IMPORTED_MODULE_1__infrastructure_basecomponent__["a" /* BaseComponent */]));
 
 //# sourceMappingURL=home.js.map
@@ -305,13 +301,12 @@ var LoadIndicatorService = /** @class */ (function () {
     }
     LoadIndicatorService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["d" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0_ionic_angular__["d" /* LoadingController */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["d" /* LoadingController */]])
     ], LoadIndicatorService);
     return LoadIndicatorService;
-    var _a;
 }());
 
-//# sourceMappingURL=loading.js.map
+//# sourceMappingURL=load-indicator-service.js.map
 
 /***/ }),
 
@@ -344,7 +339,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_tabs_tabs__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__ionic_native_status_bar__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__ionic_native_splash_screen__ = __webpack_require__(192);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__infrastructure_loading__ = __webpack_require__(197);
+throw new Error("Cannot find module \"../infrastructure/loading\"");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -391,7 +386,7 @@ var AppModule = /** @class */ (function () {
             providers: [
                 __WEBPACK_IMPORTED_MODULE_8__ionic_native_status_bar__["a" /* StatusBar */],
                 __WEBPACK_IMPORTED_MODULE_9__ionic_native_splash_screen__["a" /* SplashScreen */],
-                __WEBPACK_IMPORTED_MODULE_10__infrastructure_loading__["a" /* LoadIndicatorService */],
+                __WEBPACK_IMPORTED_MODULE_10__infrastructure_loading__["LoadIndicatorService"],
                 { provide: __WEBPACK_IMPORTED_MODULE_0__angular_core__["u" /* ErrorHandler */], useClass: __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicErrorHandler */] }
             ]
         })
@@ -455,20 +450,12 @@ var MyApp = /** @class */ (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BaseComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_ionic_angular__ = __webpack_require__(31);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__loading__ = __webpack_require__(197);
-
 
 var BaseComponent = /** @class */ (function () {
     function BaseComponent(injector) {
+        this.injector = injector;
         this.navCtrl = injector.get(__WEBPACK_IMPORTED_MODULE_0_ionic_angular__["e" /* NavController */]);
-        this.loadingService = injector.get(__WEBPACK_IMPORTED_MODULE_1__loading__["a" /* LoadIndicatorService */]);
     }
-    BaseComponent.prototype.showLoading = function (msg) {
-        this.loadingService.showLoading();
-    };
-    BaseComponent.prototype.dismissLoading = function () {
-        this.loadingService.dismissLoading();
-    };
     return BaseComponent;
 }());
 
@@ -481,6 +468,7 @@ var BaseComponent = /** @class */ (function () {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = LongTask;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__load_indicator_service__ = __webpack_require__(197);
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
@@ -516,35 +504,40 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+
 function LongTask(target, // The prototype of the class
     propertyKey, // The name of the method
     descriptor) {
     var originalMethod = descriptor.value;
     descriptor.value = function () {
         return __awaiter(this, void 0, void 0, function () {
-            var ret, err_1;
+            var injector, loadingService, ret, err_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        this.showLoading(propertyKey);
-                        return [4 /*yield*/, originalMethod.apply(this)];
+                        injector = this.injector;
+                        loadingService = injector.get(__WEBPACK_IMPORTED_MODULE_0__load_indicator_service__["a" /* LoadIndicatorService */]);
+                        _a.label = 1;
                     case 1:
-                        ret = _a.sent();
-                        this.dismissLoading();
-                        return [2 /*return*/, ret];
+                        _a.trys.push([1, 3, , 4]);
+                        loadingService.showLoading();
+                        return [4 /*yield*/, originalMethod.apply(this)];
                     case 2:
+                        ret = _a.sent();
+                        loadingService.dismissLoading();
+                        return [2 /*return*/, ret];
+                    case 3:
                         err_1 = _a.sent();
-                        this.dismissLoading();
+                        loadingService.dismissLoading();
                         throw err_1;
-                    case 3: return [2 /*return*/];
+                    case 4: return [2 /*return*/];
                 }
             });
         });
     };
     return descriptor;
 }
-//# sourceMappingURL=longtask.js.map
+//# sourceMappingURL=long-task-decorator.js.map
 
 /***/ })
 

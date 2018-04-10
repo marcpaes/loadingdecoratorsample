@@ -1,7 +1,8 @@
 import { Component, Injector } from "@angular/core";
 import { NavController, LoadingController, Loading } from "ionic-angular";
 import { BaseComponent } from "../../infrastructure/basecomponent";
-import { LongTask } from "../../infrastructure/longtask";
+import { LongTask } from "../../infrastructure/long-task-decorator";
+
 
 @Component({
     selector: "page-home",
@@ -14,15 +15,15 @@ export class HomePage extends BaseComponent {
 
     ionViewDidEnter() {}
 
-    @LongTask
+    
     public async reload() {
-        console.log(this);
+        await this.loadData();
+        await this.loadData();
         await this.loadData();
     }
 
     @LongTask
     public loadData() {
-        console.log(this);
         return new Promise((resolve, reject) => {
             setTimeout(resolve, 2000);
         });

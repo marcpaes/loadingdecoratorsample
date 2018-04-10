@@ -10,7 +10,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { LoadIndicatorService } from '../infrastructure/loading';
+import { LoadIndicatorService } from '../infrastructure/load-indicator-service';
 
 @NgModule({
   declarations: [
